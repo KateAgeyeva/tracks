@@ -13,6 +13,7 @@ import SigninScreen from './src/screens/SigninScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { navigationRef } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import { Provider as LocationProvider } from './src/context/LocationContext';
 
 
 const Stack = createNativeStackNavigator();
@@ -88,8 +89,10 @@ const App = () => {
 
 export default () => {
   return (
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <LocationProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </LocationProvider>
   );
 };
