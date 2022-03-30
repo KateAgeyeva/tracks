@@ -16,6 +16,8 @@ import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import { Provider as LocationProvider } from './src/context/LocationContext';
 import { Provider as TrackProvider } from './src/context/TrackContext';
 
+import { FontAwesome } from '@expo/vector-icons';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,17 +28,17 @@ const MainFlow = () => {
       <Tab.Screen
         name="Tracks"
         component={Tracks}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, tabBarIcon: () => (<FontAwesome name="th-list" size={15} color="black" />) }}
       />
       <Tab.Screen
         name="TrackCreate"
         component={TrackCreateScreen}
-        options={{ headerShown: false }}
+        options={{ title: 'Add Track', tabBarIcon: () => (<FontAwesome name="plus" size={20} color="black" />), headerShown: false }}
       />
       <Tab.Screen
         name="Account"
         component={AccountScreen}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, tabBarIcon: () => (<FontAwesome name="gear" size={20} color="black" />) }}
       />
     </Tab.Navigator>
   );
@@ -48,12 +50,11 @@ const Tracks = () => {
       <Stack.Screen
         name="TrackList"
         component={TrackListScreen}
-        options={{ headerShown: false }}
+        options={{ title: 'Tracks' }}
       />
       <Stack.Screen
         name="TrackDetail"
         component={TrackDetailScreen}
-        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
